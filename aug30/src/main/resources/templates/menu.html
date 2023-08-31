@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- 타임리프 선언하기 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<nav th:fragment="menu"> <!-- menu란 이름으로 불러서 사용하겠습니다. -->
+		<ul>
+			<li th:onclick="|location.href='@{/}'|">홈</li>
+			<li th:onclick="|location.href='@{/board}'|">게시판</li>
+			<li th:onclick="|location.href='@{/mooni}'|">문의</li>
+			<li th:onclick="|location.href='@{/info}'|">정보보기</li>
+			<th:block th:if="${session.mname eq null}">
+			<!-- 		eq연산자는 = 역할, 문자열 등을 비교할 때 사용 -->    
+				<li th:onclick="|location.href='@{./login}'|">로그인</li>
+			</th:block >
+			<th:block th:if="${session.mname ne null}">
+			<!-- 					ne는 != 를 의미 -->
+				<li th:onclick="|location.href='@{./logout}'|">로그아웃</li>
+			</th:block>
+		</ul>
+	</nav>
+	
+	<div th:fragment="footer">
+		footer입니다.
+	</div>
+</body>
+</html>

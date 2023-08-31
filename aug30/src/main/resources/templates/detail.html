@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- 타임리프 선언하기 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{./css/thymeleaf.css}">
+</head>
+<body>
+	<th:block th:insert="~{/menu.html :: menu}"></th:block> <!-- 문서 삽입 ~{ }  -->
+	<!--  						menu만 가져와 -->
+	<h1>detail</h1>
+	<div>
+		번호 : [[${detail.bno}]]<br>
+		제목 : [[${detail.btitle}]]<br>
+		글쓴이 : [[${detail.m_name}]]<br>
+		날짜 : [[${detail.bdate}]]<br>
+		내용 : [(${detail.bcontent})]<br>
+	</div>
+	<button th:onclick="|location.href='@{/board}'|">게시판으로</button> <!-- thymeleaf 타입으로 -->
+<!-- 					|안에 있는 문자 연결| -->
+	<th:block th:insert="~{/menu.html :: footer}"></th:block>
+	<!--                     footer 내용만 가져와 -->
+</body>
+</html>

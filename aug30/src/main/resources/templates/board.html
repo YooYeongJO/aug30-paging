@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- 타임리프 선언하기 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>board</title>
+<link rel="stylesheet" type="text/css" th:href="@{./css/thymeleaf.css}">
+<link rel="stylesheet" type="text/css" th:href="@{./css/board.css}"> <!-- thymeleaf 경로설정은 @가 들어간다 --> 
+</head>
+<body>
+	<th:block th:insert="~{/menu.html :: menu}"></th:block> <!-- 문서 삽입 ~{ }  -->
+	<!--  						menu만 가져와 -->
+
+	<h1>board</h1>
+	[[${session.mname}]]님 반갑습니다.
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>제목</td>
+			<td>글쓴이</td>
+			<td>날짜</td>
+			<td>좋아요</td>		
+		</tr>
+		<tr th:each="row : ${list}"> <!-- thymeleaf for each문 -->
+			<td th:text="${row.bno}">번호자리</td>
+			<td th:onclick="|location.href='@{./detail(bno=${row.bno})}'|">[[${row.btitle}]]<small>[[${row.commentcount}]]</small></td> 
+			<!-- 			|안에 있는 문자 연결|							댓글 수 띄우려고 small태그로 연결 -->
+			<td th:text="${row.m_name}">글쓴이</td>
+			<td th:text="${row.bdate}">날짜</td>
+			<td th:text="${row.blike}">좋아요</td>		
+		</tr>
+	</table>
+	<div class="paging">
+		<th:block th:each="i : ${#numbers.sequence(1, 10)}">
+			<button th:onclick="|location.href='@{./board(pageNo=${i})}'|">[[${i}]]</button>
+			<!-- 				|안에 있는 문자 연결| -->
+		</th:block>
+	</div>
+	
+</body>
+</html>

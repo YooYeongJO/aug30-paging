@@ -1,0 +1,22 @@
+@charset "UTF-8";
+body {
+	background-color: #D4F4FA;
+}
+table {
+	width: 900px;
+	height: auto;
+	border-collapse: collapse; /* 빨간 줄이 연결되게 */
+	background-color: white;
+}
+th{
+	background-color: #c0c0c0;
+	border-bottom: 1px solid green;
+}
+td{
+	border-bottom: 1px solid red;
+	text-align: center; /* 글자 정렬 */
+}
+
+tr:hover {
+	background-color: #EAEAEA;
+}
