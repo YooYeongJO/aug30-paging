@@ -19,7 +19,7 @@ public class BoardController {
 	
 	// pageNO (페이징)
 	@GetMapping("/board")
-	public String board(@RequestParam(name="pageNO", required = false, defaultValue = "1") int pageNo, Model model) {
+	public String board(@RequestParam(name="pageNo", required = false, defaultValue = "1") int pageNo, Model model) {
 									//					필수값 			값이 안들어오면 1이라 적어줘
 		// pageNo === (pageNo - 1) * 10 => 10개씩 보여줘
 		// 1페이지 => 0, 10  2페이지 => 10, 10  3페이지 20, 10 형태
